@@ -25,5 +25,4 @@ formSelector.addEventListener('submit', (event) => {
         "headers": { "content-type": "application/json" },
         "body": JSON.stringify(body)
     }).then( response => console.log(response) ).catch( error => console.error(error) );
-
 });
