@@ -6,7 +6,6 @@ const inputAtracoes = document.getElementById('atracoes');
 const inputDescricao = document.getElementById('descricao');
 const inputData = document.getElementById('data');
 const inputLotacao = document.getElementById('lotacao');
-
 const parseQueryString = (queryString) =>{
     const tmpQueryString = queryString.slice(1);
 

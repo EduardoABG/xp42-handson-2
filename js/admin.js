@@ -32,18 +32,20 @@ const renderElements = (eventArray) => {
         firstAElement.innerText = "Ver Reservas";
         firstAElement.classList.add('btn');
         firstAElement.classList.add('btn-dark');
+        firstAElement.setAttribute('href', ('editar-reservas.html?id=' + event._id));
 
         const secondAElement = document.createElement('a');
         secondAElement.innerText = "Editar";
         secondAElement.classList.add('btn');
         secondAElement.classList.add('btn-secondary');
-        secondAElement.setAttribute('href', ('editar-evento.html?id=' + event._id))
+        secondAElement.setAttribute('href', ('editar-evento.html?id=' + event._id));
 
         const thirdAElement = document.createElement('a');
         thirdAElement.innerText = "Excluir";
         thirdAElement.classList.add('btn');
         thirdAElement.classList.add('btn-danger');
         thirdAElement.setAttribute('href', ('excluir-evento.html?id=' +event._id));
+        
         forthTdElement.append(firstAElement, secondAElement, thirdAElement);
         trElement.append(thElement, firstTdElement, secondTdElement, thirdTdElement, forthTdElement);
         tableBodySelector.appendChild(trElement);
