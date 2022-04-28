@@ -1,13 +1,4 @@
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com"
-const parseQueryString = (queryString) =>{
-    const tmpQueryString = queryString.slice(1);
-
-    return Object.fromEntries(
-        tmpQueryString.split('&').map((parametros) =>{
-            return parametros.spli("=");
-        })
-    );
-};
 
 const inputNome = document.getElementById('nome');
 const inputBanner = document.getElementById('banner');
@@ -16,11 +7,22 @@ const inputDescricao = document.getElementById('descricao');
 const inputData = document.getElementById('data');
 const inputLotacao = document.getElementById('lotacao');
 
+const parseQueryString = (queryString) =>{
+    const tmpQueryString = queryString.slice(1);
+
+    return Object.fromEntries(
+        
+        tmpQueryString.split('&').map((parametros) =>{
+            return parametros.split("=");
+        })
+    );
+};
+
+
 
 const populaCampos = (data) =>{
     const {name, poster, attractions, description, scheduled, number_tickets} =
-        data
-    ;
+        data;
     inputNome.value = name;
     inputBanner.value = poster;
     inputAtracoes.value = attractions.join(", ");
@@ -30,7 +32,7 @@ const populaCampos = (data) =>{
 };
 
 const getEventoById = (id) => {
-    fetch(`${BASE_URL}/events/${id}`)
-        .then((response) => response.json())
-        .then(populaCampos);
+    fetch(`${BASE_URL}/events/${id}`).then((response) => response.json()).then(populaCampos);
 }
+
+

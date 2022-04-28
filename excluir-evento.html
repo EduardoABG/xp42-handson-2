@@ -62,29 +62,29 @@
                     <form class="col-6">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" aria-describedby="nome" value="Lolla"
+                            <input type="text" class="form-control" id="nome" aria-describedby="nome" name="name" value="Lolla"
                                 disabled>
                         </div>
                         <div class="mb-3">
                             <label for="banner" class="form-label">Banner</label>
-                            <input type="text" class="form-control" id="banner" aria-describedby="banner"
+                            <input type="text" class="form-control" id="banner" name="banner" aria-describedby="banner"
                                 value="https://capricho.abril.com.br/wp-content/uploads/2021/11/lolla.jpg" disabled>
                             <small>adicione o link da imagem</small>
                         </div>
                         <div class="mb-3">
                             <label for="atracoes" class="form-label">Atrações</label>
-                            <input type="text" class="form-control" id="atracoes" aria-describedby="atracoes"
+                            <input type="text" class="form-control" id="atracoes" name="attractions" aria-describedby="atracoes"
                                 value="The Strokes, Paramore, Foo Fighters, Hiatus Kaiyote, Lianne La Havas " disabled>
                             <small>insira o nome dos artistas separados por vírgula</small>
                         </div>
                         <div class="mb-3">
                             <label for="descricao" class="form-label">Descrição</label>
-                            <textarea name="descricao" id="descricao" class="form-control" rows="5" disabled>Festival maneirissimo de jovens, com algumas bandas que a gente conhece e várias outras que nunca ouvimos falar! Cervejas com valores abusivos, muito sol e entorpecentes. uhuuuuuu
+                            <textarea name="descricao" id="descricao" class="form-control" name="description" rows="5" disabled>Festival maneirissimo de jovens, com algumas bandas que a gente conhece e várias outras que nunca ouvimos falar! Cervejas com valores abusivos, muito sol e entorpecentes. uhuuuuuu
                             </textarea>
                         </div>
                         <div class="mb-3">
                             <label for="data" class="form-label">Data</label>
-                            <input type="datetime" name="data" id="data" class="form-control"
+                            <input type="datetime-local" name="scheduled" id="data" class="form-control"
                                 placeholder="00/00/00 00:00" value="22/03/2022 12:00" disabled>
                         </div>
                         <div class="mb-3">
@@ -102,6 +102,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="/js/global.js"></script>
+    <script src="js/excluir-evento.js"></script>
 </body>
 
 </html>
