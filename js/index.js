@@ -19,17 +19,24 @@ const main = async () =>{
             const descricaoEvento = document.createElement("p");
             descricaoEvento.innerText = `${evento.description}`;
 
-            articleReservas.innerHTML = `
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReserva" 
-            data-bs-id="${evento._id}" data-bs-name="${evento.name}">reservar ingresso</a>`;
+            const botao = document.createElement("a");
+            botao.setAttribute("href","#");
+            botao.setAttribute("class","btn btn-primary");
+            botao.setAttribute("data-bs-toggle","modal");
+            botao.setAttribute("data-bs-target","#addReserva");
+            botao.setAttribute("data-bs-id",evento._id);
+            botao.setAttribute("data-bs-name",evento.name);
+            botao.innerText = "reservar ingresso";
 
-  
+            articleReservas.append(tituloEvento,atracoesEvento,descricaoEvento,botao)
+            getEventos.appendChild(articleReservas);
+            
             getEventos.appendChild(articleReservas);
         });
         
-    const addReserva = document.getElementById('addReserva')
+    const addReserva = document.getElementById("addReserva")
     const addReservaInput = new bootstrap.Modal(addReserva);
-    addReserva.addEventListener('shown.bs.modal', function (evento) {
+    addReserva.addEventListener("show.bs.modal", function (evento) {
         const botaoReserva = evento.relatedTarget;
         const idReserva = botaoReserva.getAttribute("data-bs-id");
         const nomeReserva = botaoReserva.getAttribute("data-bs-name");
@@ -72,89 +79,7 @@ const main = async () =>{
             })
             .catch((error) => console.log(error.message));
     });
+
 };
 
 main();
-
-// const main = async () => {
-//     const divEventos = document.querySelector("#eventos");
-//     divEventos.innerHTML = "";
-  
-//     const data = await fetch(`${BASE_URL}/events`).then((response) =>
-//       response.json()
-//     );
-  
-//     data
-//       .filter((evento) => new Date(evento.scheduled) > new Date())
-//       .sort((a, b) => new Date(a.scheduled) - new Date(b.scheduled))
-//       .slice(0, 3)
-//       .forEach((evento) => {
-//         const article = document.createElement("article");
-//         article.setAttribute("class", "evento card p-5 m-3");
-  
-//         article.innerHTML = `
-//           <h2>${evento.name} - ${new Date(evento.scheduled).toLocaleString(
-//           "pt-br"
-//         )}</h2>
-//           <h4>${evento.attractions.join(", ")}</h4>
-//           <p>
-//             ${evento.description}
-//           </p>
-//           <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalReserva" data-bs-id="${
-//             evento._id
-//           }" data-bs-name="${evento.name}">reservar ingresso</a>
-//         `;
-  
-//         divEventos.appendChild(article);
-//       });
-  
-//     const modalReserva = document.getElementById("modalReserva");
-//     const modalReservaObj = new bootstrap.Modal(modalReserva);
-  
-//     modalReserva.addEventListener("show.bs.modal", function (event) {
-//       const button = event.relatedTarget;
-//       const id = button.getAttribute("data-bs-id");
-//       const name = button.getAttribute("data-bs-name");
-  
-//       modalReserva.querySelector("#title").textContent = name;
-//       modalReserva.querySelector("#id").value = id;
-//     });
-  
-//     modalReserva.addEventListener("hide.bs.modal", function () {
-//       modalReserva.querySelector(".modal-title").textContent = "";
-//       modalReserva.querySelector("#id").value = "";
-//       modalReserva.querySelector("#name").value = "";
-//       modalReserva.querySelector("#email").value = "";
-//     });
-  
-//     const formReserva = modalReserva.querySelector("form");
-  
-//     formReserva.addEventListener("submit", (event) => {
-//       event.preventDefault();
-  
-//       const body = {};
-  
-//       for (i = 0; i < formReserva.elements.length - 1; i++) {
-//         const item = formReserva.elements[i];
-  
-//         body[item.name] = item.value;
-//       }
-  
-//       fetch(`${BASE_URL}/bookings`, {
-//         method: "POST",
-//         headers: {
-//           Accept: "application/json",
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(body),
-//       })
-//         .then(() => {
-//           alert("Reserva feita com sucesso");
-  
-//           modalReservaObj.hide();
-//         })
-//         .catch((error) => console.log(error.message));
-//     });
-// };
-  
-// main();
