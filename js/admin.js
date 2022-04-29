@@ -7,6 +7,7 @@ const getEvents = async() =>{
         console.log(error);
     }
 }
+
 const renderElements = (eventArray) => {
     const tableBodySelector = document.querySelector('#table-body');
     eventArray.forEach((event, index) => {
@@ -15,10 +16,8 @@ const renderElements = (eventArray) => {
         thElement.innerText = index + 1;
 
         const firstTdElement = document.createElement('td');
-        const date = event.scheduled.slice(0, 10);
-        const dataBr = date.split('-').reverse().join('/');
-        const time = event.scheduled.substring(11,16);
-        firstTdElement.innerText = `${dataBr} ${time}`;
+        const date =  new Date(event.created_at).toLocaleString("pt-br");
+        firstTdElement.innerText = `${date}`;
        
         const secondTdElement = document.createElement('td');
         secondTdElement.innerText = event.name;
@@ -51,7 +50,6 @@ const renderElements = (eventArray) => {
         tableBodySelector.appendChild(trElement);
     });
 }
-
 async  function main() {
     try{
         const eventArray = await getEvents();
