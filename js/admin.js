@@ -1,4 +1,3 @@
-const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com"
 const getEvents = async() =>{
     try{
         const response = await fetch(`${BASE_URL}/events`);
