@@ -83,3 +83,7 @@ const main = async () =>{
 };
 
 main();
+
+let largura = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+const img = document.getElementById("banner");
+img.setAttribute("width", largura);
